@@ -16,7 +16,15 @@
         </div>
       </div>
     </div>
-    <div class="container"></div>
+    <div class="container">
+      <van-cell title="个人信息设置" is-link to="index" size="large" icon="setting" />
+      <van-cell title="收藏列表" is-link to="index" size="large" icon="like"/>
+      <van-cell title="发布管理" is-link to="index" size="large" icon="bell" />
+      <van-cell title="分享" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="share" />
+      <van-cell title="加入我们" is-link url="/vant/mobile.html" size="large" icon="good-job" />
+      <van-cell title="中国志愿服务网" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="hot" />
+      <van-cell title="退出登录" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="warning" />
+    </div>
     <!--1.单独封装一个组件: 利用slot知识点-->
   </div>
 </template>
@@ -58,7 +66,7 @@
     align-items: center;
   }
   .welcome{
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #ffffff;
     margin-left: 2rem;
   }
@@ -70,6 +78,10 @@
     border-radius: 5px;
     text-align: center;
     line-height: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .container{
+    margin-top: 1vh;
   }
 
 </style>

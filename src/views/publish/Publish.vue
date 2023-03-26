@@ -19,6 +19,13 @@
             </van-radio-group>
           </template>
         </van-field>
+        <van-field
+          v-model="tel"
+          name="tel"
+          label="联系方式"
+          placeholder="输入手机号"
+          :rules="[{ pattern, message: '请输入正确内容' }]"
+        />
         <van-field name="uploader" label="文件上传">
           <template #input>
             <van-uploader v-model="uploader" />
@@ -39,7 +46,7 @@
       />
         <!-- 通过 validator 进行异步函数校验 -->
         <div style="margin: 16px;">
-          <van-button round block type="info" native-type="submit">发布</van-button>
+          <van-button round color="#FFBE71" block type="info" native-type="submit">发布</van-button>
         </div>
       </van-form>
 
@@ -72,6 +79,7 @@
         title: '',
         content: '',
         tag: '',
+        tel: '',
         pattern: /^[\u4e00-\u9fa5_a-zA-Z0-9_]{2,10}$/,
         username: "hhh",
         type: '',
@@ -86,7 +94,7 @@
     },
     methods: {
       validator(val) {
-        return /1\d{10}/.test(val);
+        return /\d{10}/.test(val);
       },
       // 异步校验函数返回 Promise
       onFailed(errorInfo) {

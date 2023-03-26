@@ -3,7 +3,7 @@
     <keep-alive exclude="Detail">
       <router-view></router-view>
     </keep-alive>
-    <main-tab-bar class="tabbar"></main-tab-bar>
+    <main-tab-bar v-if="isLogin" class="tabbar"></main-tab-bar>
   </div>
 </template>
 
@@ -13,6 +13,11 @@
     name: 'app',
     components: {
       MainTabBar,
+    },
+    data(){
+      return{
+        isLogin: this.$store.state.isLogin
+      }
     }
   }
 </script>

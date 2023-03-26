@@ -6,7 +6,7 @@ const Publish = () => import('views/publish/Publish')
 const Msg = () => import('views/msg/Msg')
 const Profile = () => import('views/profile/Profile')
 const Detail = () => import('views/detail/Detail')
-
+const Login = () => import('views/login/Login')
 // 1.安装VueRouter
 Vue.use(VueRouter)
 
@@ -14,27 +14,52 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/home',
+    meta:{
+      isAuth: true
+    }
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    meta:{
+      isAuth: true
+    }
+  },
+  {
+    path: '/login',
+    component: Login,
+    meta:{
+      isAuth: true
+    }
   },
   {
     path: '/publish',
-    component: Publish
+    component: Publish,
+    meta:{
+      isAuth: false
+    }
   },
   {
     path: '/msg',
-    component: Msg
+    component: Msg,
+    meta:{
+      isAuth: false
+    }
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile,
+    meta:{
+      isAuth: false
+    }
   },
   {
     path: '/detail',
-    component: Detail
+    component: Detail,
+    meta:{
+      isAuth: false
+    }
   }
 ]
 
@@ -42,6 +67,14 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes
+})
+router.beforeEach((to,from,next) => {
+  if(!to.meta.isAuth){
+    alert('抱歉，请先登录')
+    next("/login")
+  }else{
+    next()
+  }
 })
 
 // 4.导出

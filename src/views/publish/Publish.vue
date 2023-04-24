@@ -19,6 +19,13 @@
             </van-radio-group>
           </template>
         </van-field>
+      <van-field
+        v-model="location"
+        name="location"
+        label="联系地址"
+        placeholder="输入详细地址"
+        :rules="[{ pattern, message: '请输入正确内容' }]"
+      />
         <van-field
           v-model="tel"
           name="tel"
@@ -56,12 +63,13 @@
 
 <script>
   import NavBar from 'common/navbar/NavBar'
-
+  import {publish} from "@/network/publish";
   import TabMenu from './childComps/TabMenu'
   import TabControl from 'content/tabControl/TabControl'
   import Scroll from 'common/scroll/Scroll'
   import TabContentCategory from './childComps/TabContentCategory'
   import TabContentDetail from './childComps/TabContentDetail'
+  import {Toast} from "vant";
 
 
   export default {
@@ -72,15 +80,13 @@
     },
     data() {
 		  return {
-		    categories: [],
-        categoryData: {
-        },
         currentIndex: -1,
         title: '',
         content: '',
         tag: '',
         tel: '',
-        pattern: /^[\u4e00-\u9fa5_a-zA-Z0-9_]{2,10}$/,
+        location: '',
+        pattern: /^[\u4e00-\u9fa5_a-zA-Z0-9_]{2,100}$/,
         username: "hhh",
         type: '',
         uploader: [{ url: 'https://img01.yzcdn.cn/vant/leaf.jpg' }],
@@ -102,6 +108,42 @@
       },
       onSubmit(value){
         console.log(value)
+        let imgList = value.uploader
+        function getFormatDate() {
+          let date = new Date();
+          let year = date.getFullYear();
+          let month = date.getMonth() + 1;
+          let day = date.getDate();
+          // let hour = date.getHours();
+          // let minutes = date.getMinutes();
+          // let seconds = date.getSeconds();
+          month = (month<10)? '0'+ month : month;
+          day = (day<10)? '0'+ day : day;
+          // hour = (hour<10)? '0'+ hour : hour;
+          // minutes = (minutes<10)? '0'+ minutes : minutes;
+          // seconds = (seconds<10)? '0'+ seconds : seconds;
+          let currentDate = year + "-" + month + "-" + day;
+          return currentDate;
+        }
+        let time = getFormatDate()
+        let params = {
+          name: this.$store.state.name,
+          title: value.title,
+          content: value.content,
+          type: parseInt(value.type),
+          tel: value.tel,
+          location: value.location,
+          img: imgList[0].url,
+          time: time
+        }
+        publish(params).then(res => {
+          setTimeout(()=>{
+            Toast('上传成功');
+            console.log(this.$store.state.name)
+          },500)
+          console.log(res)
+        })
+
       }
     }
 	}

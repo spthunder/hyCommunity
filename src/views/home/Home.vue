@@ -4,7 +4,7 @@
       <div slot="center">红心社区帮扶中心</div>
     </nav-bar>
     <div>
-      <home-swiper :banners="banners"
+      <home-swiper :banners="banners" :test="test"
                     ref="hSwiper">
       </home-swiper>
       <tab-control @itemClick="tabClick"
@@ -39,6 +39,7 @@
 		  return {
 		    banners: [],
         recommends: [],
+        test:"dhjkasdadh",
         goodsList: {
           'common': {page: 1, list: []},
           'urgent': {page: 1, list: []},
@@ -58,13 +59,16 @@
     created() {
       console.log('创建Home');
       getSwipperdata().then(res => {
-        this.banners = res.data.list
+        this.banners.push(...res.data.list)
+        this.test = '777'
+        console.log(this.banners)
       })
       getCommondata().then(res => {
-        this.goodsList['common'].list = res.data.list
+        this.goodsList['common'].list = res.data
+        console.log(res)
       })
       getUrgentdata().then(res => {
-        this.goodsList['urgent'].list = res.data.list
+        this.goodsList['urgent'].list = res.data
       })
     },
     methods: {

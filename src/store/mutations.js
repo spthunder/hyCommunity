@@ -12,6 +12,12 @@ const mutations = {
       info.checked = true
       state.cartList.push(info)
     }
+  },
+  hideTabbar(state){
+    state.showTabbar = false
+  },
+  showTabbar(state){
+    state.showTabbar = true
   }
 }
 

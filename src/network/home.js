@@ -1,13 +1,13 @@
 import axios from './axios.js'
 let getCommondata = function(){
   return axios({
-    url:'/event/commonData/query',
+    url:'/event/common',
     method:'get'
   })
 }
 let getUrgentdata = function () {
   return axios({
-    url:'/event/urgentData/query',
+    url:'/event/urgent',
     method:'get'
   })
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="msg">
     <nav-bar class="nav-bar"><div slot="center">消息</div></nav-bar>
-    <div class="system">
+    <div class="system" @click="toNotify">
       <div class="icon">
         <img class="notify" src="~assets/img/message/notify2.svg">
       </div>
@@ -114,6 +114,11 @@
     },
     computed: {
 
+    },
+    methods:{
+      toNotify(){
+        this.$router.push('/msg/system')
+      }
     }
 	}
 </script>

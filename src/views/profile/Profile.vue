@@ -23,7 +23,7 @@
       <van-cell title="分享" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="share" />
       <van-cell title="加入我们" is-link url="/vant/mobile.html" size="large" icon="good-job" />
       <van-cell title="中国志愿服务网" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="hot" />
-      <van-cell title="退出登录" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="warning" />
+      <van-cell title="退出登录" is-link @click="exit" size="large" icon="warning" />
     </div>
     <!--1.单独封装一个组件: 利用slot知识点-->
   </div>
@@ -42,6 +42,13 @@
     data: function () {
 		  return {
 
+      }
+    },
+    methods:{
+      exit(){
+        this.$store.state.isLogin = false
+        this.$router.push('/login')
+        this.$store.commit('hideTabbar')
       }
     },
     mounted: function () {

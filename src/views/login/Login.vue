@@ -9,7 +9,7 @@
         fit="cover"
         width="6rem"
         height="6rem"
-        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+        :src= "require('@/assets/img/login/loginLogo.png')"
       />
     </div>
 

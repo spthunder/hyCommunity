@@ -6,15 +6,29 @@
       left-arrow
       @click-left="onClickLeft"
     />
+    <div class="showImg">
+      <img :src="img">
+    </div>
     <div class="main">
-      {{title}}
-      {{content}}
-    </div>
-    <div class="option">
-      <van-button type="primary" style="margin-right: 2rem">一键收藏</van-button>
-      <van-button type="info">联系Ta</van-button>
-    </div>
+      <div class="content">
+        <h2 style="text-align: center">{{title}}</h2>
+        <div style="padding: 0.5rem 1rem">
+          <p>{{content}}</p>
+        </div>
+      </div>
+      <div class="option">
+        <van-button round color="rgb(250,85,37)" style="width: 40%" type="info">一键联系</van-button>
+        <div class="func star">
+          <van-icon name="star-o" size="2rem" />
+          <p>221</p>
+        </div>
+        <div class="func like">
+          <van-icon name="good-job-o" size="2rem" />
+          <p>221</p>
+        </div>
 
+      </div>
+    </div>
 
   </div>
 </template>
@@ -59,10 +73,12 @@
         content: '',
         title: '',
         themeTops: [],
-        currentIndex: 0
+        currentIndex: 0,
+        img:''
       }
     },
     created() {
+      this.img = this.$route.params.img
       this.title = this.$route.params.title
       this.content = this.$route.params.content
       this.$store.commit('hideTabbar')
@@ -83,18 +99,40 @@
 
 <style scoped>
   #detail {
-    background-color: #f6f6f6;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
   }
-
+  .showImg{
+    width: 100vw;
+    height: 30vh;
+    overflow: hidden;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
   .main{
-    width: 95vw;
-    border-radius: 2rem;
-    height: 80vh;
+    flex: 1;
+    position: relative;
   }
   .option{
+    position: absolute;
+    left: 0;
+    bottom: 0;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    border-top: 3px solid #f6f6f6;
   }
-
+  .func{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

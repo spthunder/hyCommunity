@@ -9,8 +9,9 @@ const Detail = () => import('views/detail/Detail')
 const Login = () => import('views/login/Login')
 const Recommend = () => import('views/recommend/Recommend')
 const Progress = () => import('views/progress/Progress')
-const Systemnotify = () => import('views/msg/views/Systemnotify')
+const SystemNotify = () => import('views/msg/views/SystemNotify')
 const Collect = () => import('views/profile/views/Collect')
+const Chat = () => import('views/msg/views/Chat.vue')
 // 1.安装VueRouter
 Vue.use(VueRouter)
 
@@ -51,12 +52,11 @@ const routes = [
     meta:{
       isAuth: false
     },
-    children:[
-      {
-        path:'/system',
-        commit: Systemnotify
-      }
-    ]
+  },
+  {
+    path: '/snotify',
+    name:'SystemNotify',
+    component: SystemNotify
   },
   {
     path: '/profile',
@@ -69,6 +69,15 @@ const routes = [
     name:"detail",
     path: '/detail/:id',
     component: Detail,
+    meta:{
+      isAuth: false,
+      index: 'detail'
+    }
+  },
+  {
+    name:"chat",
+    path: '/chat/:id',
+    component: Chat,
     meta:{
       isAuth: false,
       index: 'detail'

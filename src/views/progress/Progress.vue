@@ -2,6 +2,7 @@
   <div id="progress">
     <nav-bar class="navbar"><div slot="center">帮扶进度</div></nav-bar>
     <div class="item">
+
       <van-contact-card
         type="edit"
         :name="currentContact.name"

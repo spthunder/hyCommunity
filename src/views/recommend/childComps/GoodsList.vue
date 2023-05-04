@@ -6,9 +6,9 @@
       finished-text="没有更多了"
       @load="onLoad"
     >
-      <van-card v-for="(item,index) in list" :key="index"
-        :desc = "item.name"
-        thumb= "https://img01.yzcdn.cn/vant/ipad.jpeg"
+      <van-card v-for="(item,index) in list" :key="index" @click="itemClick(item.id,item.content, item.title, item.img)"
+                :desc = "item.name"
+                :thumb= item.img
       >
         <template #title>
           <div style="font-size: 1.1em; font-weight: bold">
@@ -30,44 +30,42 @@
 </template>
 
 <script>
-  import GoodsListItem from "@/views/home/childComps/GoodsListItem";
-  export default {
-    name: "GoodsList",
-    components:{
-      GoodsListItem
+import GoodsListItem from "@/views/home/childComps/GoodsListItem";
+export default {
+  name: "GoodsList",
+  components:{
+    GoodsListItem
+  },
+  props: {
+    list: {
+      type: Array,
+      default: []
+    }
+  },
+  data(){
+    return{
+      loading: false,
+      finished: true,
+    }
+  },
+  methods: {
+    onLoad() {
+      // 异步更新数据
+      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
     },
-    props: {
-      list: {
-        type: Array,
-        default: []
-      }
-    },
-    data(){
-      return{
-        loading: false,
-        finished: false,
-      }
-    },
-    methods: {
-      onLoad() {
-        // 异步更新数据
-        // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-        setTimeout(() => {
-          // for (let i = 0; i < 10; i++) {
-          //   this.list.push(this.list.length + 1);
-          // }
-          //
-          // // 加载状态结束
-          // this.loading = false;
-          //
-          // // 数据全部加载完成
-          // if (this.list.length >= 40) {
-          //   this.finished = true;
-          // }
-        }, 1000);
-      },
-    },
-  }
+    itemClick(id,content, title,img){
+      this.$router.push({
+        name:"detail",
+        params:{
+          id: id,
+          img: img,
+          content: content,
+          title: title
+        }
+      })
+    }
+  },
+}
 </script>
 
 <style scoped>

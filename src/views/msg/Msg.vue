@@ -8,24 +8,14 @@
       <div class="tip">您还有{{num}}条未读系统通知</div>
     </div>
     <div class="list">
-      <van-cell-group inset>
-        <van-cell :title=item.name :value=item.time :label=item.message v-for="(item,index) in messageList" :key="index" >
-          <template #icon>
-            <van-image style="margin-right: 1rem"
-              round
-              width="3rem"
-              height="3rem"
-              :src=item.figure
-            />
-          </template>
-        </van-cell>
-      </van-cell-group>
+      <MsgList></MsgList>
     </div>
   </div>
 </template>
 
 <script>
   import NavBar from 'common/navbar/NavBar'
+  import MsgList from "@/views/msg/childComps/MsgList";
 
 	export default {
 		name: "Msg",
@@ -33,83 +23,10 @@
       return{
         num: 1,
         systemList:[],
-        messageList:[
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          },
-          {
-            name:"咕咕咕",
-            figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-            time:"3-16",
-            message:"你在干嘛"
-          }
-        ],
       }
     },
     components: {
+      MsgList,
 		  NavBar,
     },
     computed: {
@@ -117,7 +34,7 @@
     },
     methods:{
       toNotify(){
-        this.$router.push('/msg/system')
+        this.$router.push('/snotify')
       }
     }
 	}
@@ -158,7 +75,6 @@
     height: 1rem;
     line-height: 1rem;
     width: 15rem;
-    overflow: scroll;
   }
   .list{
     width: 100vw;
@@ -168,9 +84,5 @@
   }
   .list::-webkit-scrollbar {
     display: none; /* Chrome Safari */
-  }
-  .tx{
-    height: 3rem;
-    width: 3rem;
   }
 </style>

@@ -1,18 +1,22 @@
 <template>
-  <div id="notify">
+  <div>
     <van-nav-bar
-      title="详情"
+      class="nav-bar"
+      title="咕咕咕"
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"
     />
-    系统通知哈哈哈哈
   </div>
 </template>
 
 <script>
 export default {
-  name: "Systemnotify",
+  name: "chat.vue",
+  created() {
+    this.$store.commit('hideTabbar')
+    console.log("进来咯")
+  },
   methods:{
     onClickLeft() {
       this.$router.back()
@@ -23,5 +27,8 @@ export default {
 </script>
 
 <style scoped>
-
+.nav-bar{
+  position: sticky;
+  top: 0;
+}
 </style>

@@ -66,10 +66,10 @@ export default {
       console.log(this.banners)
     })
     getCommondata().then(res => {
-      this.goodsList['common'].list = res.data.list
+      this.goodsList['common'].list = res.data
     })
     getUrgentdata().then(res => {
-      this.goodsList['urgent'].list = res.data.list
+      this.goodsList['urgent'].list = res.data
     })
   },
   methods: {

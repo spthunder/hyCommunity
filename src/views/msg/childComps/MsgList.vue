@@ -1,0 +1,114 @@
+<template>
+  <div>
+    <van-cell-group inset>
+      <van-cell :title=item.name @click="toDetail" :value=item.time :label=item.message v-for="(item,index) in messageList" :key="index" >
+        <template #icon>
+          <van-image style="margin-right: 1rem"
+                     round
+                     width="3rem"
+                     height="3rem"
+                     :src=item.figure
+          />
+        </template>
+      </van-cell>
+    </van-cell-group>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "MsgList",
+  data(){
+    return{
+      messageList:[
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        },
+        {
+          name:"咕咕咕",
+          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
+          time:"3-16",
+          message:"你在干嘛"
+        }
+      ],
+    }
+  },
+  methods:{
+    toDetail(){
+      this.$router.push({
+        name:'chat',
+        params:{
+          id:111
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

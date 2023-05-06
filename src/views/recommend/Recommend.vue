@@ -4,15 +4,21 @@
       <div slot="center">帮扶推荐</div>
     </nav-bar>
     <div>
-      <van-search @search="onSearch" v-model="value" placeholder="请输入搜索关键词" />
+      <van-search @search="onSearch" show-action @cancel="onCancel" v-model="value" placeholder="请输入搜索关键词" />
       <home-swiper :banners="banners" :test="test"
                    ref="hSwiper">
       </home-swiper>
-      <tab-control @itemClick="tabClick"
-                   :titles="['社区日常', '社区紧急']"
-                   ref="tabControl">
-      </tab-control>
-      <goods-list :list="showGoodsList" class="list"></goods-list>
+      <div v-if="!isSearching">
+        <tab-control @itemClick="tabClick"
+                     :titles="['社区日常', '社区紧急']"
+                     ref="tabControl">
+        </tab-control>
+        <goods-list :list="showGoodsList" class="list"></goods-list>
+      </div>
+      <div v-else>
+        <goods-list :list="searchList"></goods-list>
+      </div>
+
     </div>
   </div>
 </template>
@@ -28,6 +34,10 @@ import {
   getSwipperdata
 } from "network/home";
 
+import {
+  getUserByName
+} from "@/network/user";
+
 export default {
   name: "Recommend",
   components: {
@@ -38,10 +48,12 @@ export default {
   },
   data() {
     return {
+      isSearching:false,
       value:'',
       banners: [],
       recommends: [],
       test:"dhjkasdadh",
+      searchList:[],
       goodsList: {
         'common': {page: 1, list: []},
         'urgent': {page: 1, list: []},
@@ -74,7 +86,18 @@ export default {
   },
   methods: {
     onSearch(){
-
+      getUserByName(this.value).then(res => {
+        console.log(res)
+        if(res.status === 200){
+          this.isSearching = true
+          this.searchList = []
+          this.searchList.push(...res.data)
+        }
+      })
+    },
+    onCancel(){
+      this.isSearching = false
+      console.log("我取消了")
     },
     tabClick(index) {
       switch (index) {

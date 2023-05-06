@@ -8,11 +8,13 @@ import nuserMenu from '../router/asyRouter/nuser'
 Vue.use(Vuex)
 
 const state = {
-  cartList: [],
+  collectList: '',
   tabbarList: nuserMenu(),
   isLogin: false,
   showToast: false,
   name:'',
+  id: "",
+  img: "",
   showTabbar: true
 }
 

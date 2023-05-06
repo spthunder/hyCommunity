@@ -6,13 +6,29 @@
     left-arrow
     @click-left="onClickLeft"
   />
-  收藏列表
+  <goods-list :list="list"></goods-list>
 </div>
 </template>
 
 <script>
+import GoodsList from "@/views/profile/childComps/GoodsList";
+import {getCollect} from "@/network/event";
+
 export default {
   name: "collect",
+  components: {GoodsList},
+  data(){
+    return{
+      list:[],
+      collectList: ""
+    }
+  },
+  created() {
+    this.collectList = this.$store.state.collectList
+    getCollect(this.collectList).then(res => {
+      this.list.push(...res.data)
+    })
+  },
   methods:{
     onClickLeft() {
       this.$router.back()

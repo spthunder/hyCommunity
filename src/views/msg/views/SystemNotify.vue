@@ -11,7 +11,7 @@
       <span class="allMessage">全部消息</span>
       <span class="edit">编辑</span>
     </div>
-    <system-list></system-list>
+    <system-list :list=list></system-list>
   </div>
 </template>
 
@@ -20,9 +20,17 @@ import SystemList from "@/views/msg/childComps/SystemList";
 export default {
   name: "SystemNotify",
   components: {SystemList},
+  data(){
+    return{
+      list:[]
+    }
+  },
   created() {
-    this.$store.commit('hideTabbar')
+    console.log(this.$store.state.showTabbar)
     console.log("进来咯")
+    this.$bus.$on("getNotify", (list) => {
+      this.list.push(...list)
+    })
   },
   methods:{
     onClickLeft() {

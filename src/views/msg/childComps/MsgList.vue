@@ -22,10 +22,22 @@ export default {
     return{
       messageList:[
         {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
+          name:"西华",
+          figure:"https://img2.baidu.com/it/u=1619929019,1234523232&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+          time:"4-05",
+          message:"获得了你的联系方式"
+        },
+        {
+          name:"子月啼啼",
+          figure:"https://img2.baidu.com/it/u=1578370331,2005553669&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+          time:"3-25",
+          message:"获得了你的联系方式"
+        },
+        {
+          name:"小小仙",
+          figure:"https://img1.baidu.com/it/u=1338830027,2021379704&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+          time:"3-21",
+          message:"给你点了喜欢"
         },
         {
           name:"咕咕咕",
@@ -33,66 +45,6 @@ export default {
           time:"3-16",
           message:"你在干嘛"
         },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
-        }
       ],
     }
   },

@@ -15,7 +15,8 @@ Vue.use(VueLazyLoad, {
   preLoad: 1,
   loading: require('assets/img/common/placeholder.png')
 })
-
+let EventBus = new Vue()
+Vue.prototype.$bus = EventBus
 new Vue({
   render: h => h(App),
   store,

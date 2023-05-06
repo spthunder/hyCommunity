@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
+import Setting from "@/views/profile/views/Setting";
+import {Col} from "vant";
+import PublishList from "@/views/profile/views/PublishList";
 const Home = () => import('views/home/Home')
 const Publish = () => import('views/publish/Publish')
 const Msg = () => import('views/msg/Msg')
@@ -100,8 +103,34 @@ const routes = [
     component:Progress,
     meta:{
       isAuth: false
+    },
+  },
+  {
+    path: '/setting',
+    name:"setting",
+    component: Setting,
+    meta:{
+      isAuth:false
     }
-  }
+  },
+  {
+    path: '/publishList',
+    name:"publishList",
+    component: PublishList,
+    meta:{
+      isAuth:false
+    }
+  },
+  {
+    path: '/collect',
+    name:"collect",
+    component: Collect,
+    meta:{
+      isAuth:false
+    }
+  },
+
+
 ]
 
 // 3.创建路由对象

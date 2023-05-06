@@ -113,6 +113,9 @@ export default {
           let data = res.data
           console.log(data)
           this.$store.state.name = data[0].name
+          this.$store.state.img = data[0].img
+          this.$store.state.id = data[0].id
+          this.$store.state.collectList = data[0].collectList
           console.log(this.$store.state.name)
           if(data[0].role === 0){ //是受助人
             this.$store.state.tabbarList = nmenu()

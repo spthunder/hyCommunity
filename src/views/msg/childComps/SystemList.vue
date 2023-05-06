@@ -1,41 +1,21 @@
 <template>
   <div class="messageList">
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
-    </div>
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
-    </div>
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
-    </div>
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
-    </div>
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
-    </div>
-    <div class="item">
-      <div class="title">红心社区隐私政策的修订通知</div>
-      <div class="detail">亲爱的用户，根据业务开展的实际情况，红心社区近期更新了《红心社区隐私政策》中的相关内容。你可以前往红心社区客户端[我的-设置-隐私政策-红心社区隐私政策全文]</div>
-      <div class="time">2022-02-05</div>
+    <div class="item" v-for="(item) in  list" :key="item.id">
+      <div class="title">{{ item.title }}</div>
+      <div class="detail">{{item.content}}</div>
+      <div class="time">{{ item.time.split(" ")[0] }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "systemList"
+  name: "systemList",
+  props:{
+    list:{
+      type:Array,
+    }
+  }
 }
 </script>
 

@@ -16,12 +16,13 @@
 <script>
   import NavBar from 'common/navbar/NavBar'
   import MsgList from "@/views/msg/childComps/MsgList";
+  import {showNotify} from "@/network/notify";
 
-	export default {
+  export default {
 		name: "Msg",
     data(){
       return{
-        num: 1,
+        num: "-",
         systemList:[],
       }
     },
@@ -29,13 +30,26 @@
       MsgList,
 		  NavBar,
     },
+    created() {
+      showNotify().then(res => {
+        this.systemList = res.data
+        this.$bus.$emit("getNotify", this.systemList)
+        this.num = this.systemList.length
+      })
+    },
+    mounted() {
+      this.$bus.$on("showNum",(num)=>{
+        this.num = num
+      })
+    },
     computed: {
 
     },
     methods:{
       toNotify(){
         this.$router.push('/snotify')
-      }
+        this.$store.commit("hideTabbar")
+      },
     }
 	}
 </script>

@@ -7,19 +7,19 @@
             round
             width="5rem"
             height="5rem"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            :src=this.$store.state.img
           />
         </div>
         <div class="welcome">
-          <div>Hi~，小甜甜</div>
+          <div>Hi~，{{this.$store.state.name}}</div>
           <div class="certify">已实名认证</div>
         </div>
       </div>
     </div>
     <div class="container">
-      <van-cell title="个人信息设置" is-link to="index" size="large" icon="setting" />
-      <van-cell title="收藏列表" is-link to="index" size="large" icon="like"/>
-      <van-cell title="发布管理" is-link to="index" size="large" icon="bell" />
+      <van-cell title="个人信息设置" @click="toNext" is-link to="setting" size="large" icon="setting" />
+      <van-cell title="收藏列表" @click="toNext" is-link to="collect" size="large" icon="like"/>
+      <van-cell title="发布管理" @click="toNext" is-link to="publishList" size="large" icon="bell" />
       <van-cell title="分享" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="share" />
       <van-cell title="加入我们" is-link url="/vant/mobile.html" size="large" icon="good-job" />
       <van-cell title="中国志愿服务网" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="hot" />
@@ -39,6 +39,9 @@
     components: {
 		  UserInfo, ListView, NavBar
     },
+    created() {
+
+    },
     data: function () {
 		  return {
 
@@ -49,6 +52,9 @@
         this.$store.state.isLogin = false
         this.$router.push('/login')
         this.$store.commit('hideTabbar')
+      },
+      toNext(){
+        this.$store.commit("hideTabbar")
       }
     },
     mounted: function () {

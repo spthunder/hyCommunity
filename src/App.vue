@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <router-view></router-view>
     <van-popup round v-model="this.$store.state.showToast" style="height: 10vh; width: 80vw; font-size: 2rem;text-align: center;line-height: 10vh">
         请先登录！
     </van-popup>

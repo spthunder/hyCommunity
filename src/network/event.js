@@ -6,6 +6,13 @@ let getCollect = function (ids){
     method:"get"
   })
 }
+let getPublish = function (userId){
+  return axios({
+    url:"/event/fromById/" + userId,
+    method:"get"
+  })
+}
 export {
-  getCollect
+  getCollect,
+  getPublish
 }

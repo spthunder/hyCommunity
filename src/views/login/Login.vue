@@ -67,7 +67,7 @@ export default {
   components: {Identify},
   data() {
     return {
-      name: 'aa',
+      name: 'xihu',
       password: '123456',
       agree: false,
       value: '',

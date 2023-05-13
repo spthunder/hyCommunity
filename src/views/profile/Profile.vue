@@ -17,12 +17,16 @@
       </div>
     </div>
     <div class="container">
-      <van-cell title="个人信息设置" @click="toNext" is-link to="setting" size="large" icon="setting" />
       <van-cell title="收藏列表" @click="toNext" is-link to="collect" size="large" icon="like"/>
       <van-cell title="发布管理" @click="toNext" is-link to="publishList" size="large" icon="bell" />
-      <van-cell title="分享" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="share" />
-      <van-cell title="加入我们" is-link url="/vant/mobile.html" size="large" icon="good-job" />
-      <van-cell title="中国志愿服务网" is-link url="https://chinavolunteer.mca.gov.cn/site/home" size="large" icon="hot" />
+      <van-cell title="分享" is-link @click="showShare = true"  size="large" icon="share" />
+      <van-share-sheet
+        v-model="showShare"
+        title="立即分享给好友"
+        :options="options"
+        @select="onSelect"
+      />
+      <van-cell title="加入我们" @click="showToast" is-link  size="large" icon="good-job" />
       <van-cell title="退出登录" is-link @click="exit" size="large" icon="warning" />
     </div>
     <!--1.单独封装一个组件: 利用slot知识点-->
@@ -33,6 +37,7 @@
   import UserInfo from './childComps/UserInfo'
   import ListView from './childComps/ListView'
   import NavBar from 'common/navbar/NavBar'
+  import { Toast } from 'vant';
 
 	export default {
 		name: "Profile",
@@ -44,10 +49,24 @@
     },
     data: function () {
 		  return {
-
+        showShare: false,
+        options: [
+          { name: '微信', icon: 'wechat' },
+          { name: '微博', icon: 'weibo' },
+          { name: '复制链接', icon: 'link' },
+          { name: '分享海报', icon: 'poster' },
+          { name: '二维码', icon: 'qrcode' },
+        ],
       }
     },
     methods:{
+      showToast(){
+        Toast('投递消息至wpjcode@163.com')
+      },
+      onSelect(option) {
+        Toast(option.name);
+        this.showShare = false;
+      },
       exit(){
         this.$store.state.isLogin = false
         this.$router.push('/login')

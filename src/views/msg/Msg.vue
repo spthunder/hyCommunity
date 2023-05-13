@@ -32,8 +32,11 @@
     },
     created() {
       showNotify().then(res => {
-        this.systemList = res.data
-        this.$bus.$emit("getNotify", this.systemList)
+        this.systemList.push(...res.data)
+        console.log("系统通知内容:"+this.systemList)
+        // this.$bus.$emit("getNotify", this.systemList)
+        // this.$store.state.notify = this.systemList
+        this.$store.commit("addNotify", this.systemList)
         this.num = this.systemList.length
       })
     },

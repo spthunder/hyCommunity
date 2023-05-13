@@ -18,6 +18,10 @@ const mutations = {
   },
   showTabbar(state){
     state.showTabbar = true
+  },
+  addNotify(state, info){
+    state.notify = info
+    console.log(state.notify)
   }
 }
 

@@ -17,14 +17,14 @@
         </div>
       </div>
       <div class="option">
-        <van-button round color="rgb(250,85,37)" style="width: 40%" type="info">一键联系</van-button>
+        <van-button round color="rgb(250,85,37)" style="width: 40%" type="info">一键帮扶</van-button>
         <div class="func star">
           <van-icon name="star-o" size="2rem" />
-          <p>221</p>
+          <p>{{collect}}</p>
         </div>
         <div class="func like">
           <van-icon name="good-job-o" size="2rem" />
-          <p>221</p>
+          <p>{{love}}</p>
         </div>
 
       </div>
@@ -74,13 +74,17 @@
         title: '',
         themeTops: [],
         currentIndex: 0,
-        img:''
+        img:'',
+        love:'',
+        collect:''
       }
     },
     created() {
       this.img = this.$route.params.img
       this.title = this.$route.params.title
       this.content = this.$route.params.content
+      this.love = this.$route.params.love
+      this.collect = this.$route.params.collect
       this.$store.commit('hideTabbar')
       console.log(this.content)
     },

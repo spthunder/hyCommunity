@@ -5,6 +5,7 @@ export default function axios(option) {
 		// 1.创建axios的实例
 		const instance = originAxios.create({
 			baseURL: 'http://localhost:5000/api',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			timeout: 5000
 		});
 		// 2.传入对象进行网络请求

@@ -15,7 +15,9 @@ const state = {
   name:'',
   id: "",
   img: "",
-  showTabbar: true
+  showTabbar: true,
+  notify:[],
+  result:''
 }
 
 const store = new Vuex.Store({

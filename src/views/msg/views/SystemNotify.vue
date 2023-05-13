@@ -28,9 +28,16 @@ export default {
   created() {
     console.log(this.$store.state.showTabbar)
     console.log("进来咯")
-    this.$bus.$on("getNotify", (list) => {
-      this.list.push(...list)
-    })
+
+  },
+  mounted() {
+    console.log("mounted")
+    // this.$bus.$on("getNotify", (list) => {
+    //   console.log(list)
+    //   this.list.push(...list)
+    // })
+    this.list.push(...this.$store.state.notify)
+    console.log(this.$store.state.notify)
   },
   methods:{
     onClickLeft() {

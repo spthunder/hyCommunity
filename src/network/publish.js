@@ -1,7 +1,7 @@
 import axios from './axios.js'
 let publish = function(params){
   return axios({
-    url:'/event/add',
+    url:'/event',
     method:'post',
     params: params
   })

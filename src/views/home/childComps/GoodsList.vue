@@ -6,7 +6,7 @@
       finished-text="没有更多了"
       @load="onLoad"
     >
-      <van-card v-for="(item,index) in list" :key="index" @click="itemClick(item.id,item.content, item.title, item.img)"
+      <van-card v-for="(item,index) in list" :key="index" @click="itemClick(item.id,item.content, item.title, item.img, item.love, item.collect)"
         :desc = "item.name"
         :thumb= item.img
       >
@@ -53,14 +53,16 @@
         // 异步更新数据
         // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       },
-      itemClick(id,content, title,img){
+      itemClick(id,content, title,img, love, collect){
         this.$router.push({
           name:"detail",
           params:{
             id: id,
             img: img,
             content: content,
-            title: title
+            title: title,
+            love: love,
+            collect: collect
           }
         })
         this.$store.commit("hideTabbar")

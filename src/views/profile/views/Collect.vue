@@ -1,7 +1,8 @@
 <template>
-<div>
+<div id="collect">
   <van-nav-bar
-    title="详情"
+    class="nav"
+    title="收藏列表"
     left-text="返回"
     left-arrow
     @click-left="onClickLeft"
@@ -39,5 +40,14 @@ export default {
 </script>
 
 <style scoped>
-
+#collect{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: scroll;
+}
+.nav{
+  position: sticky;
+  top: 0;
+}
 </style>

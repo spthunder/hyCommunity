@@ -12,7 +12,14 @@ let getPublish = function (userId){
     method:"get"
   })
 }
+let eventById = function(id){
+  return axios({
+    url:"/event/" + id,
+    method:"get"
+  })
+}
 export {
   getCollect,
-  getPublish
+  getPublish,
+  eventById
 }

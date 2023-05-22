@@ -17,11 +17,11 @@
         </template>
         <template #price>
           <div style="font-size: 1.1em">
-            发布于{{item.time}}
+            发布于{{item.time?item.time.slice(0,10): item.time}}
           </div>
         </template>
         <template #tags>
-          <van-tag plain type="danger" style="margin-right: 0.6rem">{{item.tag === 0 ?"行动不便":"老人"}}</van-tag>
+          <van-tag plain type="danger" style="margin-right: 0.6rem">{{transNum(item.tag)}}</van-tag>
           <van-tag plain type="danger">已认证</van-tag>
         </template>
       </van-card>
@@ -51,6 +51,21 @@
     mounted() {
       console.log(this.list)
 
+    },
+    computed:{
+      transNum(){
+        return function(num){
+          if(num === 0){
+            return "行动不便"
+          }else if(num === 1){
+            return "老人"
+          }else if(num === 2){
+            return "小孩"
+          }else {
+            return "其他"
+          }
+        }
+      }
     },
     methods: {
       onLoad() {

@@ -7,24 +7,24 @@
       @click-left="onClickLeft"
     />
     <div class="showImg">
-      <img :src="img">
+      <img :src="item.img">
     </div>
     <div class="main">
       <div class="content">
-        <h2 style="text-align: center">{{title}}</h2>
+        <h2 style="text-align: center">{{item.title}}</h2>
         <div style="padding: 0.5rem 1rem">
-          <p>{{content}}</p>
+          <p>{{item.content}}</p>
         </div>
       </div>
       <div class="option">
         <van-button round color="rgb(250,85,37)" style="width: 40%" type="info">一键帮扶</van-button>
         <div class="func star">
           <van-icon name="star-o" size="2rem" />
-          <p>{{collect}}</p>
+          <p>{{item.collect}}</p>
         </div>
         <div class="func like">
           <van-icon name="good-job-o" size="2rem" />
-          <p>{{love}}</p>
+          <p>{{item.love}}</p>
         </div>
 
       </div>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import {eventById} from "@/network/event";
   import Scroll from 'common/scroll/Scroll'
 
   import DetailNavBar from './childComps/DetailNavBar'
@@ -48,10 +49,7 @@
   import DetailBottomBar from './childComps/DetailBottomBar'
   import BackTop from 'content/backTop/BackTop'
 
-  import {getDetail, getRecommend, Goods, Shop, GoodsParam} from "network/detail";
-  import {backTopMixin} from "@/common/mixin";
-  import {BACKTOP_DISTANCE} from "@/common/const";
-  import {Toast} from "vant";
+
 
   export default {
 		name: "Detail",
@@ -70,22 +68,25 @@
     },
     data() {
 		  return {
-        content: '',
-        title: '',
+        id:'',
+        item:{},
         themeTops: [],
         currentIndex: 0,
-        img:'',
-        love:'',
-        collect:''
       }
     },
     created() {
-      this.img = this.$route.params.img
-      this.title = this.$route.params.title
-      this.content = this.$route.params.content
-      this.love = this.$route.params.love
-      this.collect = this.$route.params.collect
       this.$store.commit('hideTabbar')
+      this.id = this.$route.params.id
+      eventById(this.id).then(res => {
+        console.log(res)
+        this.item = res.data[0]
+      })
+      // this.img = this.$route.params.img
+      // this.title = this.$route.params.title
+      // this.content = this.$route.params.content
+      // this.love = this.$route.params.love
+      // this.collect = this.$route.params.collect
+
       console.log(this.content)
     },
     updated() {

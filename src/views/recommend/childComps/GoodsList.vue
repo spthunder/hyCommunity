@@ -21,7 +21,7 @@
           </div>
         </template>
         <template #tags>
-          <van-tag plain type="danger" style="margin-right: 0.6rem">{{item.tag === 0 ?"行动不便":"老人"}}</van-tag>
+          <van-tag plain type="danger" style="margin-right: 0.6rem">{{transNum(item.tag)}}</van-tag>
           <van-tag plain type="danger">已认证</van-tag>
         </template>
       </van-card>
@@ -48,6 +48,21 @@ export default {
       finished: true,
     }
   },
+  computed:{
+    transNum(){
+      return function(num){
+        if(num === 0){
+          return "行动不便"
+        }else if(num === 1){
+          return "老人"
+        }else if(num === 2){
+          return "小孩"
+        }else {
+          return "其他"
+        }
+      }
+    }
+  },
   mounted() {
     console.log(this.list)
 
@@ -62,11 +77,6 @@ export default {
         name:"detail",
         params:{
           id: id,
-          img: img,
-          content: content,
-          title: title,
-          love: love,
-          collect: collect
         }
       })
       this.$store.commit("hideTabbar")

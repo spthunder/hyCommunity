@@ -52,7 +52,7 @@ export default {
       console.info('没有录到什么，请重试')
     },
     recordComplete (text) {
-      this.$store.state.result = text
+      this.$store.state.result = this.$store.state.result + text
       console.info('识别完成! 最终结果：', text)
     },
     recordFailed (error) {

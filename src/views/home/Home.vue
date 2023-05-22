@@ -8,7 +8,7 @@
                     ref="hSwiper">
       </home-swiper>
       <tab-control @itemClick="tabClick"
-                    :titles="['社区日常', '社区紧急']"
+                    :titles="['社区日常', '社区紧急', '推荐']"
                     ref="tabControl">
       </tab-control>
       <goods-list :list="showGoodsList" class="list"></goods-list>
@@ -26,6 +26,9 @@
     getUrgentdata,
     getSwipperdata
   } from "network/home";
+  import {
+    getRecommendByUser
+  } from "@/network/recommend";
 
   export default {
 		name: "Home",
@@ -43,6 +46,7 @@
         goodsList: {
           'common': {page: 1, list: []},
           'urgent': {page: 1, list: []},
+          'recommend': {page: 1, list: []},
         },
         currentType: 'common',
         isTabFixed: false,
@@ -70,15 +74,24 @@
       getUrgentdata().then(res => {
         this.goodsList['urgent'].list = res.data
       })
+      getRecommendByUser(this.$store.state.id).then(res => {
+        let arr = res.data.event_list
+        this.goodsList['recommend'].list = res.data.event_list
+        console.log(arr)
+      })
     },
     methods: {
 		  tabClick(index) {
+        console.log(index)
 		    switch (index) {
           case 0:
             this.currentType = 'common'
             break
           case 1:
             this.currentType = 'urgent'
+            break
+          case 2:
+            this.currentType = 'recommend'
             break
         }
       },

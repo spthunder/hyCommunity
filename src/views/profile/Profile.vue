@@ -18,7 +18,7 @@
     </div>
     <div class="container">
       <van-cell title="收藏列表" @click="toNext" is-link to="collect" size="large" icon="like"/>
-      <van-cell title="发布管理" @click="toNext" is-link to="publishList" size="large" icon="bell" />
+      <van-cell v-if="this.$store.state.role === 0" title="发布管理" @click="toNext" is-link to="publishList" size="large" icon="bell" />
       <van-cell title="分享" is-link @click="showShare = true"  size="large" icon="share" />
       <van-share-sheet
         v-model="showShare"
@@ -68,7 +68,9 @@
         this.showShare = false;
       },
       exit(){
+
         this.$store.state.isLogin = false
+
         this.$router.push('/login')
         this.$store.commit('hideTabbar')
       },

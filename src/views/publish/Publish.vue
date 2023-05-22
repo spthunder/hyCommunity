@@ -46,7 +46,7 @@
         label="内容"
         type="textarea"
         maxlength="100"
-        placeholder="请详细描述您的情况"
+        placeholder="点击下方尝试语音输入！"
         show-word-limit
         :rules="[{ message: '点击下方尝试语音输入！' }]"
       />
@@ -101,6 +101,7 @@
     },
     created() {
 		  // 1.请求分类数据
+      this.$store.state.result = ''
     },
     computed: {
 
@@ -161,7 +162,7 @@
               type: '',
               uploader: [],
             }
-            this.$store.state.content=""
+            this.$store.state.result=""
           },500)
           console.log(res)
         }).catch(err => {

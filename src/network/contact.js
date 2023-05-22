@@ -1,11 +1,12 @@
 import axios from "@/network/axios";
 
-let getUserByName = function (name){
+let contactById = function(id){
   return axios({
-    url:"/event/search/" + name,
+    url:"/contact/"+id,
     method:"get"
   })
 }
+
 export {
-  getUserByName
+  contactById
 }

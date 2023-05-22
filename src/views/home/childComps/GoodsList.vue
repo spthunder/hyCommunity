@@ -21,8 +21,8 @@
           </div>
         </template>
         <template #tags>
-          <van-tag plain type="danger" style="margin-right: 0.6rem">生活</van-tag>
-          <van-tag plain type="danger">搬运</van-tag>
+          <van-tag plain type="danger" style="margin-right: 0.6rem">{{item.tag === 0 ?"行动不便":"老人"}}</van-tag>
+          <van-tag plain type="danger">已认证</van-tag>
         </template>
       </van-card>
     </van-list>
@@ -47,6 +47,10 @@
         loading: false,
         finished: true,
       }
+    },
+    mounted() {
+      console.log(this.list)
+
     },
     methods: {
       onLoad() {

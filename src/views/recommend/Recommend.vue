@@ -10,13 +10,13 @@
       </home-swiper>
       <div v-if="!isSearching">
         <tab-control @itemClick="tabClick"
-                     :titles="['社区日常', '社区紧急']"
+                     :titles="['社区日常', '社区紧急', '推荐']"
                      ref="tabControl">
         </tab-control>
         <goods-list :list="showGoodsList" class="list"></goods-list>
       </div>
       <div v-else>
-        <goods-list :list="searchList"></goods-list>
+        <goods-list :list="searchList" class="list"></goods-list>
       </div>
 
     </div>
@@ -35,8 +35,10 @@ import {
 } from "network/home";
 
 import {
-  getUserByName
+  getUserByName,
+
 } from "@/network/user";
+import {getRecommendByUser} from "@/network/recommend";
 
 export default {
   name: "Recommend",
@@ -57,6 +59,7 @@ export default {
       goodsList: {
         'common': {page: 1, list: []},
         'urgent': {page: 1, list: []},
+        'recommend': {page: 1, list: []},
       },
       currentType: 'common',
       isTabFixed: false,
@@ -83,6 +86,11 @@ export default {
     getUrgentdata().then(res => {
       this.goodsList['urgent'].list = res.data
     })
+    getRecommendByUser(this.$store.state.id).then(res => {
+      let arr = res.data.event_list
+      this.goodsList['recommend'].list = res.data.event_list
+      console.log(arr)
+    })
   },
   methods: {
     onSearch(){
@@ -106,6 +114,9 @@ export default {
           break
         case 1:
           this.currentType = 'urgent'
+          break
+        case 2:
+          this.currentType = 'recommend'
           break
       }
     },

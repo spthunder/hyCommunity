@@ -112,6 +112,7 @@ export default {
           this.$store.state.isLogin = true
           let data = res.data
           console.log(data)
+          this.$store.state.role = data[0].role
           this.$store.state.name = data[0].name
           this.$store.state.img = data[0].img
           this.$store.state.id = data[0].id

@@ -5,7 +5,7 @@
       <div class="icon">
         <img class="notify" src="~assets/img/message/notify2.svg">
       </div>
-      <div class="tip">您还有{{num}}条未读系统通知</div>
+      <div class="tip">您有{{num}}条来自社区的系统通知</div>
     </div>
     <div class="list">
       <MsgList></MsgList>

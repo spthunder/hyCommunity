@@ -14,6 +14,7 @@
 <script>
 import GoodsList from "@/views/profile/childComps/GoodsList";
 import {getCollect} from "@/network/event";
+import {collectById} from "@/network/collect";
 
 export default {
   name: "collect",
@@ -25,9 +26,10 @@ export default {
     }
   },
   created() {
-    this.collectList = this.$store.state.collectList
-    getCollect(this.collectList).then(res => {
-      this.list.push(...res.data)
+    collectById(this.$store.state.id).then(res=>{
+      console.log(res)
+      let data = res.data.event_list
+      this.list.push(...data)
     })
   },
   methods:{

@@ -17,7 +17,7 @@
         </template>
         <template #price>
           <div style="font-size: 1.1em">
-            发布于{{item.time}}
+            发布于{{item.time? item.time.slice(0,10): item.time}}
           </div>
         </template>
         <template #tags>

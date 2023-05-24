@@ -9,7 +9,7 @@
     />
     <div class="option">
       <span class="allMessage">全部消息</span>
-      <span class="edit">编辑</span>
+      <span class="edit">...</span>
     </div>
     <system-list :list=list></system-list>
   </div>

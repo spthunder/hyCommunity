@@ -5,6 +5,13 @@ let getRecommendByUser = function(userId){
     method:'get',
   })
 }
+let addScore = function (userId, eventId){
+  return  axios({
+    url:'/recommend/' + userId + '/' + eventId,
+    method: 'get'
+  })
+}
 export {
-  getRecommendByUser
+  getRecommendByUser,
+  addScore
 }

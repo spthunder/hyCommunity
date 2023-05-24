@@ -37,13 +37,7 @@ export default {
           name:"小小仙",
           figure:"https://img1.baidu.com/it/u=1338830027,2021379704&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
           time:"3-21",
-          message:"给你点了喜欢"
-        },
-        {
-          name:"咕咕咕",
-          figure:"https://img01.yzcdn.cn/vant/cat.jpeg",
-          time:"3-16",
-          message:"你在干嘛"
+          message:"收藏了你"
         },
       ],
     }
